@@ -8,7 +8,7 @@
     <h2>Ingrese los datos del pedido:</h2>
     <form action="comprobante.php" method="POST">
         <label for="fecha">Fecha:</label>
-        <input type="date" name="fecha" id="fecha"><br><br>
+        <input type="date" name="fecha" id="fecha" min="<?php echo date('Y-m-d'); ?>"><br><br>
 
         <label for="nombre">Nombre:</label>
         <input type="text" name="nombre" id="nombre"><br><br>
@@ -36,8 +36,8 @@
             <tr>
                 <td><input type="text" name="codigo[]" /></td>
                 <td><input type="text" name="descripcion[]" /></td>
-                <td><input type="number" name="cantidad[]" /></td>
-                <td><input type="number" name="precio[]" /></td>
+                <td><input type="number" name="cantidad[]" min="1" /></td>
+                <td><input type="number" name="precio[]" min="0" /></td>
             </tr>
         </table>
 
@@ -47,14 +47,16 @@
     </form>
 
     <script>
+        // script boton agregar producto
+        
         function agregarProducto() {
             var table = document.querySelector("table");
             var row = table.insertRow();
             row.innerHTML = `
                 <td><input type="text" name="codigo[]" /></td>
                 <td><input type="text" name="descripcion[]" /></td>
-                <td><input type="number" name="cantidad[]" /></td>
-                <td><input type="number" name="precio[]" /></td>
+                <td><input type="number" name="cantidad[]" min="0" /></td>
+                <td><input type="number" name="precio[]" min="0" /></td>
             `;
         }
     </script>
